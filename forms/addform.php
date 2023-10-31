@@ -1,29 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Data</title>
-</head>
-<body>
-    <h1>Add Subject</h1>
-    <a href="../index.php">Home</a>
-    <br/><br/>
-    <form action="../functions/add.php" method="post" name="form1">
-        <table width="25%" border="0">
-            <tr>
-                <td>Subject Code</td>
-                <td><input type="text" name="code"></td>
-            </tr>
-            <tr>
-                <td>Subject Name</td>
-                <td><input type="text" name="name"></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td><input type="submit" name="Submit" value="Add"></td>
-            </tr>
-        </table>
-    </form>
-</body>
-</html>
+<?php
+    // including the database connection file
+    include_once("../dbConnection/mysqlconfig_connection.php");
+    if(isset($_POST['update'])) {
+        $id = $_POST['id'];
+        $code = $_POST['code'];
+        $name = $_POST['name'];
+        // checking empty fields
+        if(empty($code) || empty($name)) {
+            if(empty($code)) {
+                echo "<front color='red'>Subject Code field is empty.</font><br/>";
+            }
+            if(empty($name)) {
+                echo "<front color='red'>Subject Name field is empty.</font><br/>"
+            }
+        }
+        else {
+            // updating the table
+            mysqli_query($dbc, "UPDATE tbsubject SET subject_code='$code'. subject_name='$name' WHERE subject_id='$id'");
+            // redirecting to the display page. In our case, it is index.php
+            header("Location: ../index.php");
+        }
