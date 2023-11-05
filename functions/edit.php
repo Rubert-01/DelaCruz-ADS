@@ -19,7 +19,6 @@
             mysqli_query($dbc, "UPDATE tblsubjects SET subject_code='$code', subject_name='$name' WHERE subject_id='$id'");
             // redirecting to the display page. In our case, it is index.php
             header("Location: ../index.php");
-            header("Location: ../index.php");
         }
     }
 ?>
