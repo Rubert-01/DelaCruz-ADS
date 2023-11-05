@@ -29,7 +29,7 @@
             </tr>
             <tr>
                 <td>Subject Name</td>
-                <td><input type="text" value="<?php echo $name;?>"></td>
+                <td><input type="text" name="name" value="<?php echo $name;?>"></td>
             </tr>
             <tr>
                 <td><input type="hidden" name="id" value=<?php echo $_GET['id']?>></td>
